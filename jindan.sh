@@ -14,36 +14,36 @@ echo ""
 						etc_passwd_other_permission=`stat /etc/passwd | grep -i 'Uid' | awk '{print $2}' | awk -F / '{print substr($1,5,1)}'`
 						if [ $etc_passwd_other_permission -eq 0 ] || [ $etc_passwd_other_permission -eq 4 ]; then
 							echo "■ U-07 결과 : 양호"  
-							return 0
+							
 						else
 							echo "■ U-07 결과 : 취약"  
 							echo " /etc/passwd 파일의 다른 사용자(other)에 대한 권한이 취약합니다."  
-							return 0
+							
 						fi
 					else
 						echo "■ U-07 결과 : 취약"  
 						echo " /etc/passwd 파일의 그룹 사용자(group)에 대한 권한이 취약합니다."  
-						return 0
+						
 					fi
 				else
 					echo "■ U-07 결과 : 취약"  
 					echo " /etc/passwd 파일의 사용자(owner)에 대한 권한이 취약합니다."  
-					return 0
+					
 				fi
 			else
 				echo "■ U-07 결과 : 취약"  
 				echo " /etc/passwd 파일의 권한이 644보다 큽니다."  
-				return 0
+				
 			fi
 		else
 			echo "■ U-07 결과 : 취약"  
 			echo " /etc/passwd 파일의 소유자(owner)가 root가 아닙니다."  
-			return 0
+			
 		fi
 	else
 		echo "■ U-07 결과 : N/A"  
 		echo " /etc/passwd 파일이 없습니다."  
-		return 0
+		
 	fi
 	
 	
@@ -63,36 +63,36 @@ echo ""
 						etc_hosts_other_permission=`stat /etc/hosts | grep -i 'Uid' | awk '{print $2}' | awk -F / '{print substr($1,5,1)}'`
 						if [ $etc_hosts_other_permission -eq 0 ]; then
 							echo "※ U-09 결과 : 양호"
-							return 0
+							
 						else
 							echo "※ U-09 결과 : 취약"
 							echo " /etc/hosts 파일의 다른 사용자(other)에 대한 권한이 취약합니다."
-							return 0
+							
 						fi
 					else
 						echo "※ U-09 결과 : 취약"
 						echo " /etc/hosts 파일의 그룹 사용자(group)에 대한 권한이 취약합니다."
-						return 0
+						
 					fi
 				else
 					echo "※ U-09 결과 : 취약" 
 					echo " /etc/hosts 파일의 사용자(owner)에 대한 권한이 취약합니다." 
-					return 0
+					
 				fi
 			else
 				echo "※ U-09 결과 : 취약" 
 				echo " /etc/hosts 파일의 권한이 600보다 큽니다." 
-				return 0
+				
 			fi
 		else
 			echo "※ U-09 결과 : 취약" 
 			echo " /etc/hosts 파일의 소유자(owner)가 root가 아닙니다." 
-			return 0
+			
 		fi
 	else
 		echo "※ U-09 결과 : N/A" 
 		echo " /etc/hosts 파일이 없습니다." 
-		return 0
+		
 	fi
 	
 	
@@ -118,37 +118,37 @@ echo ""
 							if [ $syslogconf_file_other_permission -ne 0 ]; then
 								echo "※ U-11 결과 : 취약" 
 								echo " ${syslogconf_files[$i]} 파일의 다른 사용자(other)에 대한 권한이 취약합니다." 
-								return 0
+								
 							fi
 						else
 							echo "※ U-11 결과 : 취약" 
 							echo " ${syslogconf_files[$i]} 파일의 그룹 사용자(group)에 대한 권한이 취약합니다." 
-							return 0
+							
 						fi
 					else
 						echo "※ U-11 결과 : 취약" 
 						echo " ${syslogconf_files[$i]} 파일의 사용자(owner)에 대한 권한이 취약합니다." 
-						return 0
+						
 					fi
 				else
 					echo "※ U-11 결과 : 취약" 
 					echo " ${syslogconf_files[$i]} 파일의 권한이 640보다 큽니다." 
-					return 0
+					
 				fi
 			else
 				echo "※ U-11 결과 : 취약" 
 				echo " ${syslogconf_files[$i]} 파일의 소유자(owner)가 root(또는 bin, sys)가 아닙니다." 
-				return 0
+				
 			fi
 		fi
 	done
 	if [ $file_exists_count -eq 0 ]; then
 		echo "※ U-11 결과 : N/A" 
 		echo " /etc/syslog.conf 파일이 없습니다." 
-		return 0
+		
 	else
 		echo "※ U-11 결과 : 양호" 
-		return 0
+		
 	fi
 
 #U-12
@@ -167,36 +167,36 @@ echo ""
 						etc_services_other_permission=`stat /etc/services | grep -i 'Uid' | awk '{print $2}' | awk -F / '{print substr($1,5,1)}'`
 						if [ $etc_services_other_permission -eq 4 ] || [ $etc_services_other_permission -eq 0 ]; then
 							echo "※ U-12 결과 : 양호" 
-							return 0
+							
 						else
 							echo "※ U-12 결과 : 취약" 
 							echo " /etc/services 파일의 다른 사용자(other)에 대한 권한이 취약합니다." 
-							return 0
+							
 						fi
 					else
 						echo "※ U-12 결과 : 취약" 
 						echo " /etc/services 파일의 그룹 사용자(group)에 대한 권한이 취약합니다." 
-						return 0
+						
 					fi
 				else
 					echo "※ U-12 결과 : 취약" 
 					echo " /etc/services 파일의 사용자(owner)에 대한 권한이 취약합니다." 
-					return 0
+					
 				fi
 			else
 				echo "※ U-12 결과 : 취약" 
 				echo " /etc/services 파일의 권한이 644보다 큽니다." 
-				return 0
+				
 			fi
 		else
 			echo "※ U-12 결과 : 취약" 
 			echo " /etc/services 파일의 파일의 소유자(owner)가 root(또는 bin, sys)가 아닙니다." 
-			return 0
+			
 		fi
 	else
 		echo "※ U-12 결과 : N/A" 
 		echo " /etc/services 파일이 없습니다." 
-		return 0
+		
 	fi
 
 #U-13
@@ -210,12 +210,12 @@ echo ""
 			if [ `ls -l ${executables[$i]} | awk '{print substr($1,2,9)}' | grep -i 's' | wc -l` -gt 0 ]; then
 				echo "※ U-13 결과 : 취약" 
 				echo " 주요 실행 파일의 권한에 SUID나 SGID에 대한 설정이 부여되어 있습니다." 
-				return 0
+				
 			fi
 		fi
 	done
 	echo "※ U-13 결과 : 양호" 
-	return 0
+	
 
 #U-15
 echo ""
@@ -224,10 +224,10 @@ echo ""
 	if [ `find / -type f -perm -2 2>/dev/null | wc -l` -gt 0 ]; then
 		echo "※ U-15 결과 : 취약" 
 		echo " world writable 설정이 되어있는 파일이 있습니다." 
-		return 0
+		
 	else
 		echo "※ U-15 결과 : 양호" 
-		return 0
+		
 	fi
 
 #U-16
@@ -237,10 +237,10 @@ echo ""
 	if [ `find /dev -type f 2>/dev/null | wc -l` -gt 0 ]; then
 		echo "※ U-16 결과 : 취약" 
 		echo " /dev 디렉터리에 존재하지 않는 device 파일이 존재합니다." 
-		return 0
+		
 	else
 		echo "※ U-16 결과 : 양호" 
-		return 0
+		
 	fi
 
 #U-44
@@ -251,10 +251,10 @@ echo ""
 		if [ `awk -F : '$3==0 {print $1}' /etc/passwd | grep -vx 'root' | wc -l` -gt 0 ]; then
 			echo "※ U-44 결과 : 취약" 
 			echo " root 계정과 동일한 UID(0)를 갖는 계정이 존재합니다." 
-			return 0
+			
 		else
 			echo "※ U-44 결과 : 양호" 
-			return 0
+			
 		fi
 	fi
 
@@ -264,11 +264,11 @@ echo ""
 	echo " 양호 판단 기준 : ftp 계정에 /bin/false 쉘이 부여되어 있는 경우" 
 	if [ `awk -F : '$1=="ftp" && $7=="/bin/false"' /etc/passwd | wc -l` -gt 0 ]; then
 		echo "※ U-62 결과 : 양호" 
-		return 0
+		
 	else
 		echo "※ U-62 결과 : 취약" 
 		echo " ftp 계정에 /bin/false 쉘이 부여되어 있지 않습니다." 
-		return 0
+		
 	fi
 
 #U-66
@@ -278,8 +278,8 @@ echo ""
 	if [ `ps -ef | grep -i 'snmp' | grep -v 'grep' | wc -l` -gt 0 ]; then
 		echo "※ U-66 결과 : 취약" 
 		echo " SNMP 서비스를 사용하고 있습니다." 
-		return 0
+		
 	else
 		echo "※ U-66 결과 : 양호" 
-		return 0
+		
 	fi
